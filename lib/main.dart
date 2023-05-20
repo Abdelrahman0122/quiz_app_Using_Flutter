@@ -53,26 +53,53 @@ class _PiValueQuizState extends State<PiValueQuiz> {
                         onChanged: (value) {
                           setState(() {
                             isChecked1 = value!;
+                            if(isChecked1) {
+                              isChecked2 = false;
+                              isChecked3 = false;
+                            }
                           });
                         },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        tileColor: isChecked1 ? Colors.grey : null,
+                        enabled: !isChecked1,
                       ),
                       CheckboxListTile(
-                        title: Text('3.141'),
-                        value: isChecked2,
-                        onChanged: (value) {
-                          setState(() {
-                            isChecked2 = value!;
-                          });
-                        },
-                      ),
+                          title: Text('3.141'),
+                          value: isChecked2,
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked2 = value!;
+                              if(isChecked2) {
+                                isChecked1 = false;
+                                isChecked3 = false;
+                              }
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          activeColor: Colors.blue,
+                          checkColor: Colors.white,
+                          tileColor: isChecked2 ? Colors.grey : null,
+
+                          enabled: !isChecked2),
                       CheckboxListTile(
                         title: Text('3.1415'),
                         value: isChecked3,
                         onChanged: (value) {
                           setState(() {
                             isChecked3 = value!;
+                            if(isChecked3) {
+                              isChecked1 = false;
+                              isChecked2 = false;
+                            }
                           });
                         },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        tileColor: isChecked3 ? Colors.grey : null,
+                        enabled: !isChecked3,
                       ),
                     ],
                   ),
@@ -140,26 +167,53 @@ class _NewScreenState extends State<NewScreen> {
                         onChanged: (value) {
                           setState(() {
                             isChecked1 = value!;
+                            if(isChecked1) {
+                              isChecked2 = false;
+                              isChecked3 = false;
+                            }
                           });
                         },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        tileColor: isChecked1 ? Colors.grey : null,
+                        enabled: !isChecked1,
                       ),
                       CheckboxListTile(
-                        title: Text('Paris'),
-                        value: isChecked2,
-                        onChanged: (value) {
-                          setState(() {
-                            isChecked2 = value!;
-                          });
-                        },
-                      ),
+                          title: Text('Paris'),
+                          value: isChecked2,
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked2 = value!;
+                              if(isChecked2) {
+                                isChecked1 = false;
+                                isChecked3 = false;
+                              }
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          activeColor: Colors.blue,
+                          checkColor: Colors.white,
+                          tileColor: isChecked2 ? Colors.grey : null,
+
+                          enabled: !isChecked2),
                       CheckboxListTile(
                         title: Text('Cairo'),
                         value: isChecked3,
                         onChanged: (value) {
                           setState(() {
                             isChecked3 = value!;
+                            if(isChecked3) {
+                              isChecked1 = false;
+                              isChecked2 = false;
+                            }
                           });
                         },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        tileColor: isChecked3 ? Colors.grey : null,
+                        enabled: !isChecked3,
                       ),
                     ],
                   ),
@@ -221,31 +275,58 @@ class _ThirdState extends State<Third> {
                       ),
                       SizedBox(height: 16.0),
                       CheckboxListTile(
-                        title: Text('Portguese'),
+                        title: Text('English'),
                         value: isChecked1,
                         onChanged: (value) {
                           setState(() {
                             isChecked1 = value!;
+                            if(isChecked1) {
+                              isChecked2 = false;
+                              isChecked3 = false;
+                            }
                           });
                         },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        tileColor: isChecked1 ? Colors.grey : null,
+                        enabled: !isChecked1,
                       ),
                       CheckboxListTile(
-                        title: Text('Spanish'),
-                        value: isChecked2,
-                        onChanged: (value) {
-                          setState(() {
-                            isChecked2 = value!;
-                          });
-                        },
-                      ),
+                          title: Text('Arabic'),
+                          value: isChecked2,
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked2 = value!;
+                              if(isChecked2) {
+                                isChecked1 = false;
+                                isChecked3 = false;
+                              }
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          activeColor: Colors.blue,
+                          checkColor: Colors.white,
+                          tileColor: isChecked2 ? Colors.grey : null,
+
+                          enabled: !isChecked2),
                       CheckboxListTile(
-                        title: Text('Arabic'),
+                        title: Text('Porteguse'),
                         value: isChecked3,
                         onChanged: (value) {
                           setState(() {
                             isChecked3 = value!;
+                            if(isChecked3) {
+                              isChecked1 = false;
+                              isChecked2 = false;
+                            }
                           });
                         },
+                        controlAffinity: ListTileControlAffinity.leading,
+                        activeColor: Colors.blue,
+                        checkColor: Colors.white,
+                        tileColor: isChecked3 ? Colors.grey : null,
+                        enabled: !isChecked3,
                       ),
                     ],
                   ),
