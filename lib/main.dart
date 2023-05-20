@@ -4,19 +4,59 @@ import 'dart:js';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz/Globals.dart';
+import 'package:quiz/about.dart';
 
 void main(){
   runApp(MaterialApp(
       title: 'Flutter Demo',
       initialRoute: '/',
       routes: {
-        '/': (context) => PiValueQuiz(),
+        '/': (context) => QuizApp(),
+        '/main': (context) => PiValueQuiz(),
         '/second': (context) => NewScreen(),
         '/third': (context)=> Third(),
         '/Score':(context)=> Score(),
+        '/about':(context)=> about(),
       }));
 
 }
+
+class QuizApp extends StatefulWidget {
+  @override
+  _QuizAppState createState() => _QuizAppState();
+}
+
+class _QuizAppState extends State<QuizApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Quiz App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Welcome to Quiz App!',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/main');
+              },
+              child: Text('Enter The Test'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
 
 class PiValueQuiz extends StatefulWidget {
   @override
@@ -406,10 +446,22 @@ class _ScoreState extends State<Score> {
                   ),
                 ),
               ),
+
             ],
           ),
+
+
         ),
+
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/about');
+        },
+        child: Icon(Icons.help_outline),
+        backgroundColor: Colors.grey,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniStartFloat,
     );
   }
 }
