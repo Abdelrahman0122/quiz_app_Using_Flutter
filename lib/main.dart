@@ -9,8 +9,9 @@ void main(){
       initialRoute: '/',
       routes: {
         '/': (context) => PiValueQuiz(),
-        '/second': (context) => SecondPage(),
-      } ));
+        '/second': (context) => NewScreen(),
+        '/third': (context)=> Third(),
+      }));
 }
 
 class PiValueQuiz extends StatefulWidget {
@@ -93,17 +94,23 @@ class _PiValueQuizState extends State<PiValueQuiz> {
     );
   }
 }
-class SecondPage extends StatefulWidget {
+class NewScreen extends StatefulWidget {
+  const NewScreen({Key? key}) : super(key: key);
+
   @override
-  _SecondPageState createState() => _SecondPageState();
+  State<NewScreen> createState() => _NewScreenState();
+
+
 }
 
-  class _SecondPageState extends State<SecondPage> {
+class _NewScreenState extends State<NewScreen> {
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
 
+  TextEditingController textEditingController = TextEditingController();
 
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +121,7 @@ class SecondPage extends StatefulWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Question 1',
+                'Question 2',
                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
               ),
               Expanded(
@@ -123,12 +130,12 @@ class SecondPage extends StatefulWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'What is the value of pi?',
+                        'What is the Capital of france?',
                         style: TextStyle(fontSize: 24.0),
                       ),
                       SizedBox(height: 16.0),
                       CheckboxListTile(
-                        title: Text('3.14'),
+                        title: Text('London'),
                         value: isChecked1,
                         onChanged: (value) {
                           setState(() {
@@ -137,7 +144,7 @@ class SecondPage extends StatefulWidget {
                         },
                       ),
                       CheckboxListTile(
-                        title: Text('3.141'),
+                        title: Text('Paris'),
                         value: isChecked2,
                         onChanged: (value) {
                           setState(() {
@@ -146,7 +153,7 @@ class SecondPage extends StatefulWidget {
                         },
                       ),
                       CheckboxListTile(
-                        title: Text('3.1415'),
+                        title: Text('Cairo'),
                         value: isChecked3,
                         onChanged: (value) {
                           setState(() {
@@ -162,6 +169,7 @@ class SecondPage extends StatefulWidget {
                 margin: EdgeInsets.all(16.0),
                 child: ElevatedButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, '/third');
                   },
                   child: Text('Submit'),
                 ),
@@ -174,3 +182,88 @@ class SecondPage extends StatefulWidget {
   }
 }
 
+class Third extends StatefulWidget {
+  const Third({Key? key}) : super(key: key);
+
+  @override
+  State<Third> createState() => _ThirdState();
+}
+
+class _ThirdState extends State<Third> {
+  TextEditingController textEditingController = TextEditingController();
+  bool isChecked1 = false;
+  bool isChecked2 = false;
+  bool isChecked3 = false;
+
+
+  @override
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.only(top: 16.0, left: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Question 3',
+                style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'What is the primary language spoken in Brazil?',
+                        style: TextStyle(fontSize: 24.0),
+                      ),
+                      SizedBox(height: 16.0),
+                      CheckboxListTile(
+                        title: Text('Portguese'),
+                        value: isChecked1,
+                        onChanged: (value) {
+                          setState(() {
+                            isChecked1 = value!;
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text('Spanish'),
+                        value: isChecked2,
+                        onChanged: (value) {
+                          setState(() {
+                            isChecked2 = value!;
+                          });
+                        },
+                      ),
+                      CheckboxListTile(
+                        title: Text('Arabic'),
+                        value: isChecked3,
+                        onChanged: (value) {
+                          setState(() {
+                            isChecked3 = value!;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/third');
+                  },
+                  child: Text('Submit'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
