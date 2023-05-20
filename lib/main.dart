@@ -1,7 +1,9 @@
 
 
+import 'dart:js';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz/Globals.dart';
 
 void main(){
   runApp(MaterialApp(
@@ -11,18 +13,24 @@ void main(){
         '/': (context) => PiValueQuiz(),
         '/second': (context) => NewScreen(),
         '/third': (context)=> Third(),
+        '/Score':(context)=> Score(),
       }));
+
 }
 
 class PiValueQuiz extends StatefulWidget {
   @override
   _PiValueQuizState createState() => _PiValueQuizState();
+  static int count =0;
+
 }
 
 class _PiValueQuizState extends State<PiValueQuiz> {
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +62,11 @@ class _PiValueQuizState extends State<PiValueQuiz> {
                           setState(() {
                             isChecked1 = value!;
                             if(isChecked1) {
+
                               isChecked2 = false;
                               isChecked3 = false;
+                              Globals.count++; // Increment the count variable
+
                             }
                           });
                         },
@@ -127,14 +138,12 @@ class NewScreen extends StatefulWidget {
   @override
   State<NewScreen> createState() => _NewScreenState();
 
-
 }
 
 class _NewScreenState extends State<NewScreen> {
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
-
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -188,6 +197,8 @@ class _NewScreenState extends State<NewScreen> {
                               if(isChecked2) {
                                 isChecked1 = false;
                                 isChecked3 = false;
+                                Globals.count++; // Increment the count variable
+
                               }
                             });
                           },
@@ -319,6 +330,7 @@ class _ThirdState extends State<Third> {
                             if(isChecked3) {
                               isChecked1 = false;
                               isChecked2 = false;
+                              Globals.count++; // Increment the count variable
                             }
                           });
                         },
@@ -336,9 +348,62 @@ class _ThirdState extends State<Third> {
                 margin: EdgeInsets.all(16.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/third');
+                    Navigator.pushNamed(context, '/Score');
                   },
                   child: Text('Submit'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class Score extends StatefulWidget {
+  const Score({Key? key}) : super(key: key);
+
+  @override
+  State<Score> createState() => _ScoreState();
+}
+
+class _ScoreState extends State<Score> {
+  TextEditingController textEditingController = TextEditingController();
+
+
+
+  @override
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          margin: EdgeInsets.only(top: 16.0, left: 16.0),
+          child:  Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center( child:Text(
+                'Score',
+                style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold),
+
+
+
+              ),),
+
+
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                          'Your Score is ${Globals.count}',
+                        style: TextStyle(fontSize: 24.0)
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
